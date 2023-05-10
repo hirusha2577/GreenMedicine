@@ -22,7 +22,7 @@ env:
   DOCKER_PASSWORD_THISARA: ${{secrets.DOCKER_PASSWORD_THISARA}}
   CART_REPO_NAME_THISARA: ${{secrets.CART_REPO_NAME_THISARA}}
   EMAIL_REPO_NAME_THISARA: ${{secrets.EMAIL_REPO_NAME_THISARA}}
-  
+
 jobs:
   user-service:
     runs-on: ubuntu-latest
