@@ -85,7 +85,7 @@ jobs:
         run: |
           cd src/delivery_service
           docker build . --file Dockerfile --tag $DOCKER_USER_SHEHAN/$DELIVERY_REPO_NAME_SHEHAN
-      - name: Push cart service docker image
+      - name: Push delivery service docker image
         run: docker push $DOCKER_USER_SHEHAN/$DELIVERY_REPO_NAME_SHEHAN
 
   email-service:
@@ -143,7 +143,7 @@ jobs:
       run: |
         cd src/product_service
         docker build . --file Dockerfile --tag $DOCKER_USER_HIRUSHA/$PRODUCT_REPO_NAME_HIRUSHA
-    - name: Push cart service docker image
+    - name: Push product service docker image
       run: docker push $DOCKER_USER_HIRUSHA/$PRODUCT_REPO_NAME_HIRUSHA
 
   payment-service:
@@ -160,13 +160,13 @@ jobs:
         mvn clean package
     - name: Docker login
       run: | # Login to Dockerhub - hirusha
-        docker login -u HirushaRavishan -p RAVISHANHIRUSHA
+        docker login -u $DOCKER_USER_HIRUSHA -p $DOCKER_PASSWORD_HIRUSHA
     - name: Build payment service docker image
       run: |
         cd src/payment_service
-        docker build . --file Dockerfile --tag HirushaRavishan/payment_service
-    - name: Push cart service docker image
-      run: docker push HirushaRavishan/payment_service
+        docker build . --file Dockerfile --tag $DOCKER_USER_HIRUSHA/$PAYMENT_REPO_NAME_HIRUSHA
+    - name: Push payment service docker image
+      run: docker push $DOCKER_USER_HIRUSHA/payment_service
   
   deploy:
     needs: [order-service, email-service, cart-service, product-service,user-service,auth-service,delivery-service,payment-service]
