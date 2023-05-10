@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: emailservice
-          image: docker.io/nikaloFlamel/email-service:v1.0.0
+          image: docker.io/nikaloFlamel/email_service:latest
           ports:
             - containerPort: 9040
           env:

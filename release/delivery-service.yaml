@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: deliveryservice 
-          image: docker.io/34shehan/deliveryservice:latest # Image that will be used to containers in the cluster
+          image: docker.io/34shehan/delivery_service:latest # Image that will be used to containers in the cluster
           imagePullPolicy: Always
           ports:
             - containerPort: 9091 # The port that the container is running on in the cluster

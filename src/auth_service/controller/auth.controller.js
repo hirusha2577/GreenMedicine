@@ -34,7 +34,7 @@ const authorize = async (req, res) => {
 		const secret = process.env.JWT_SECRET;
 
 		if (secret) {
-			const authToken = req.header("Authorization").split(' ')[1];
+			const authToken = req.header("Authorization");
 			const decodedToken = jwt.verify(authToken, secret);
             return res.status(200).send("Success");
 
@@ -53,7 +53,7 @@ const authorizeSeller = async (req, res) => {
         const privillages = [Role.Seller,Role.Admin]
     
 		if (secret) {
-			const authToken = req.header("Authorization").split(' ')[1];
+			const authToken = req.header("Authorization");
 			const decodedToken = jwt.verify(authToken, secret);
             if(privillages.includes(decodedToken.role)){
                 return res.status(200).json({isAuthorized:true});
@@ -75,7 +75,7 @@ const authorizeBuyer = async (req, res) => {
 		const secret = process.env.JWT_SECRET;
         const privillages = [Role.Seller,Role.Admin,Role.Buyer]
 		if (secret) {
-			const authToken = req.header("Authorization").split(' ')[1];
+			const authToken = req.header("Authorization");
 			const decodedToken = jwt.verify(authToken, secret);
             if(privillages.includes(decodedToken.role)){
                 return res.status(200).json({isAuthorized:true});
@@ -98,7 +98,7 @@ const authorizeAdmin = async (req, res) => {
 		const secret = process.env.JWT_SECRET;
         const privillages = [Role.Admin]
 		if (secret) {
-			const authToken = req.header("Authorization").split(' ')[1];
+			const authToken = req.header("Authorization");
             console.log(authToken)
 			const decodedToken = jwt.verify(authToken, secret);
             if(privillages.includes(decodedToken.role)){

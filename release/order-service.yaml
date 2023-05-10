@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: orderservice
-          image: docker.io/34shehan/order-service:v1.0.1
+          image: docker.io/34shehan/order_service:latest
           ports:
             - containerPort: 9090
           env:

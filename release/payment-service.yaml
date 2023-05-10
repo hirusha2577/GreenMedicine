@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: paymentservice 
-          image: docker.io/hirusharavishan/paymentservice:latest # Image that will be used to containers in the cluster
+          image: docker.io/HirushaRavishan/payment_service:latest # Image that will be used to containers in the cluster
           imagePullPolicy: Always
           ports:
             - containerPort: 9092 # The port that the container is running on in the cluster

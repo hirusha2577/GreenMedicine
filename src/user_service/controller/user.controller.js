@@ -172,7 +172,7 @@ const getUserDetailsbyID = async (req, res) => {
 const getUserDetailsbytoken = async (req, res) => {
     try {
         const secret = process.env.JWT_SECRET;
-        const authToken = req.header("Authorization").split(' ')[1];
+        const authToken = req.header("Authorization");
         const decodedToken = jwt.verify(authToken, secret);
         const user = await User.findById(decodedToken._id).select("-password")
         res.json(user);

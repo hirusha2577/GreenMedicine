@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+mongoose.set("strictQuery", false);
 export const connect = () => {
     //connect to mongodb
     mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
