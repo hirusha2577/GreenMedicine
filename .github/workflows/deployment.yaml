@@ -6,6 +6,8 @@ on:
   workflow_dispatch:
 
 env:
+  DOCKER_USER_HIRUSHA: ${{secrets.DOCKER_USER_HIRUSHA}}
+  DOCKER_PASSWORD_HIRUSHA: ${{secrets.DOCKER_PASSWORD_HIRUSHA}}
   PRODUCT_REPO_NAME_HIRUSHA: ${{secrets.PRODUCT_REPO_NAME_HIRUSHA}}
   PAYMENT_REPO_NAME_HIRUSHA: ${{secrets.PAYMENT_REPO_NAME_HIRUSHA}}
   DOCKER_USER_THISARA: ${{secrets.DOCKER_USER_THISARA}}
@@ -158,13 +160,13 @@ jobs:
         mvn clean package
     - name: Docker login
       run: | # Login to Dockerhub - hirusha
-        docker login -u ${{ env.DOCKER_USER_HIRUSHA }} -p ${{ env.DOCKER_PASSWORD_HIRUSHA }}
+        docker login -u HirushaRavishan -p RAVISHANHIRUSHA
     - name: Build payment service docker image
       run: |
         cd src/payment_service
-        docker build . --file Dockerfile --tag ${{ env.DOCKER_USER_HIRUSHA }}/$PAYMENT_REPO_NAME_HIRUSHA
+        docker build . --file Dockerfile --tag HirushaRavishan/payment_service
     - name: Push payment service docker image
-      run: docker push ${{ env.DOCKER_USER_HIRUSHA }}/$PAYMENT_REPO_NAME_HIRUSHA
+      run: docker push HirushaRavishan/payment_service
   
   deploy:
     needs: [order-service, email-service, cart-service, product-service,user-service,auth-service,delivery-service,payment-service]
