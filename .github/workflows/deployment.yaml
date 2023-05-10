@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_USER_HIRUSHA: ${{secrets.DOCKER_USER_HIRUSHA}}
-  DOCKER_PASSWORD_HIRUSHA: ${{secrets.DOCKER_PASSWORD_HIRUSHA}}
+  DOCKER_USER_HIRUSHA: ${{env.DOCKER_USER_HIRUSHA}}
+  DOCKER_PASSWORD_HIRUSHA: ${{env.DOCKER_PASSWORD_HIRUSHA}}
   PRODUCT_REPO_NAME_HIRUSHA: ${{secrets.PRODUCT_REPO_NAME_HIRUSHA}}
   PAYMENT_REPO_NAME_HIRUSHA: ${{secrets.PAYMENT_REPO_NAME_HIRUSHA}}
   DOCKER_USER_THISARA: ${{secrets.DOCKER_USER_THISARA}}
@@ -166,7 +166,7 @@ jobs:
         cd src/payment_service
         docker build . --file Dockerfile --tag $DOCKER_USER_HIRUSHA/$PAYMENT_REPO_NAME_HIRUSHA
     - name: Push payment service docker image
-      run: docker push $DOCKER_USER_HIRUSHA/payment_service
+      run: docker push $DOCKER_USER_HIRUSHA/$PAYMENT_REPO_NAME_HIRUSHA
   
   deploy:
     needs: [order-service, email-service, cart-service, product-service,user-service,auth-service,delivery-service,payment-service]
