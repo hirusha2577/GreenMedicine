@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: order-secret
+data:
+  MONGO_URL: bW9uZ29kYitzcnY6Ly9ydXNpcnU6UmF2QjE5OThAbGlua3VwLWNsdXN0ZXIuYTFidmkubW9uZ29kYi5uZXQvY2xpY2t0b2NhcnQ/cmV0cnlXcml0ZXM9dHJ1ZSZ3PW1ham9yaXR5
+  EMAIL_SERVICE: aHR0cDovLzEwLjAuNDEuMTAyOjkwNDA=
+  AUTH_SERVICE: aHR0cDovLzEwLjAuMTE1LjY1OjUwMDIvYXBpL2F1dGgvYXV0aG9yaXplQnV5ZXI=
+  USER_SERVICE: aHR0cDovLzEwLjAuMjMzLjE3MTo1MDAxL2FwaS91c2VyL3VzZXJfdG9rZW4vZ2V0ZGV0YWlscw==
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderservice-deployement
+  labels:
+    app: orderservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: orderservice
+  template:
+    metadata:
+      labels:
+        app: orderservice
+    spec:
+      containers:
+        - name: orderservice
+          image: docker.io/34shehan/order-service:v1.0.1
+          ports:
+            - containerPort: 9090
+          env:
+            - name: MONGO_URL
+              valueFrom:
+                secretKeyRef:
+                  name: order-secret
+                  key: MONGO_URL
+            - name: EMAIL_SERVICE
+              valueFrom:
+                secretKeyRef:
+                  name: order-secret
+                  key: EMAIL_SERVICE
+            - name: AUTH_SERVICE
+              valueFrom:
+                secretKeyRef:
+                  name: order-secret
+                  key: AUTH_SERVICE
+            - name: USER_SERVICE
+              valueFrom:
+                secretKeyRef:
+                  name: order-secret
+                  key: USER_SERVICE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orderservice
+spec:
+  type: LoadBalancer
+  selector:
+    app: orderservice
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090
