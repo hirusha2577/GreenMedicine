@@ -187,4 +187,4 @@ jobs:
         service_account_key: ${{secrets.GKE_SA_KEY}}
         project_id: ${{secrets.GKE_PROJECT}}
     - name: ⬆️ Deploy to K8s
-      run: gclude containre clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project superb-garden-387115
+      run: gclude containre clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" 
