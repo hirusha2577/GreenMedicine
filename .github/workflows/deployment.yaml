@@ -25,6 +25,7 @@ env:
   PROJECT_ID: ${{secrets.GKE_PROJECT}}
   GKE_CLUSTER: clay-cluster-1
   GKE_ZONE: us-central1
+  PROJECT_NAME: superb-garden-387115
   DEPLOYMENT_NAME: github-actions-gke-deployment
   IMAGE: github-actions-gke-image
   TAG: 1.0.0 
@@ -187,4 +188,4 @@ jobs:
         service_account_key: ${{secrets.GKE_SA_KEY}}
         project_id: ${{secrets.GKE_PROJECT}}
     - name: ⬆️ Deploy to K8s
-      run: gclude containre clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" 
+      run: gcloud containre clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$PROJECT_NAME"
