@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: cartservice
-          image: docker.io/nikaloFlamel/cart_service:latest # Image that will be used to containers in the cluster
+          image: docker.io/99thisara/cart_service:latest # Image that will be used to containers in the cluster
           imagePullPolicy: Always
           ports:
             - containerPort: 8081 # The port that the container is running on in the cluster

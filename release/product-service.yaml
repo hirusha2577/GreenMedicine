@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: productservice 
-          image: docker.io/HirushaRavishan/product_service:latest # Image that will be used to containers in the cluster
+          image: docker.io/hiruu98/product_service:latest # Image that will be used to containers in the cluster
           imagePullPolicy: Always
           ports:
             - containerPort: 8082 # The port that the container is running on in the cluster
