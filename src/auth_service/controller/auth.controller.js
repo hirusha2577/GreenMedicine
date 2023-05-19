@@ -7,6 +7,8 @@ const Role = {
     Admin: 'admin'
 };
 
+const test = 0;
+
 const addAuthConfig = async (req, res) => {
     const { first_name,email, password , authToken ,role} = req.body;
     try {
