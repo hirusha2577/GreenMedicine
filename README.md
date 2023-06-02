@@ -1,4 +1,3 @@
-[![ClickToCart CI/CD Pipeline](https://github.com/GreenMedicine_AyurvedicSystem_SE3020/.github/workflows/actions/workflows/deployment.yaml/badge.svg?branch=master)](https://github.com/GreenMedicine_AyurvedicSystem_SE3020/.github/workflows/actions/workflows/deployment.yaml)
 
 ===========================================
 Deployment
